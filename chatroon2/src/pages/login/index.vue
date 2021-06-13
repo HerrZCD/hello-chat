@@ -5,8 +5,8 @@
       <div class="box">
         <h3>输入昵称以开始</h3>
         <div class="input-wrapper">
-          <input type="text" v-model="userName">
-          <button class="submit" @click="login()">开始聊天</button>
+          <el-input v-model="userName" placeholder="请输入昵称" style="width: 255px"></el-input>
+          <el-button type="primary" @click="login()" class="login-btn">开始聊天</el-button>
         </div>
       </div>
     </div>
@@ -48,7 +48,10 @@ export default {
             .then(res=>res.json())
             .then(data => {
               if (data.flag === 1) {
-                alert('用户名已经被占用，请重新输入')
+                 this.$message({
+                    type: 'info',
+                    message: '用户名已经被占用'
+                  });
               } else if (data.flag === 0) {
                     this.$router.push({path:'chat', query:{
                                                         name: this.userName
@@ -83,22 +86,17 @@ export default {
     justify-content: center;
   }
 
-  input {
-    width: 300px;
-    height: 30px;
+  .login-btn {
+    margin-left: 15px;
   }
 
-  .submit {
-    margin-left: 10px;
-    cursor: pointer;
-  }
 
   .box {
     width: 500px;
     height: 200px;
     border-radius: 4px;
     border: 1px #ebebeb solid;
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     margin: 0 auto;
   }
 

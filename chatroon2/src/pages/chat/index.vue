@@ -9,7 +9,8 @@
       </div>
       <div class="input-area">
           <textarea class="input" v-model="msg"></textarea>
-          <button class="send" @click="sendMsg">发送</button>
+          <!-- <button class="send" @click="sendMsg">发送</button> -->
+          <el-button class="send-btn" @click="sendMsg">发送</el-button>
 
       </div>
     </div>
@@ -63,11 +64,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .wrapper {
+        position: relative;
         width: 650px;
         height: 610px;
         border-radius: 4px;
         border: 1px #ebebeb solid;
-        box-shadow: 10px 10px 5px #888888;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -78,7 +80,8 @@ export default {
     .message-panel {
         width: 85%;
         height: 350px;
-        border: 1px #ebebeb solid;
+        border-top: 1px #ebebeb solid;
+        border-bottom: 1px #ebebeb solid;
         overflow: scroll;
 
     }
@@ -87,12 +90,18 @@ export default {
         border-radius: 4px;
         height: 120px;
         margin-top: 20px;
+        border:0 solid black;
+    }
 
+    .send-btn {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
     }
     .input {
         width: 100%;
         height: 100%;
-        border:  1px #ebebeb solid;
+        border:  0px #ebebeb solid;
         border-radius: 4px;
         outline: none;
         padding: 5px;
