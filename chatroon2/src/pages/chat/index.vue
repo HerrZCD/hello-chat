@@ -4,11 +4,11 @@
         <h3>群聊</h3>
     
       <div class="message-panel">
-        <div class="message" v-for="(msg, index) of msgList" :key="index">{{msg}}</div>
+        <msg-box v-for="(item, index) of msgList" :key="index+Math.random()" :uname="item.name" :content="item.msg" :isself="item.isSelf"></msg-box>
 
       </div>
       <div class="input-area">
-          <textarea class="input" v-model="msg"></textarea>
+          <textarea class="input" v-model="msg" @keyup.enter="sendMsg"></textarea>
           <!-- <button class="send" @click="sendMsg">发送</button> -->
           <el-button class="send-btn" @click="sendMsg">发送</el-button>
 
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import msgBox from './msgBox.vue';
+
 export default {
   name: 'chat',
 //   props: {
@@ -25,10 +27,14 @@ export default {
 //   }
   data() {
     return {
+      content: 'hahhahaha',
       userName: '',
       msg: '',
       msgList: [],
     }
+  },
+  components: {
+      msgBox,
   },
   mounted() {
       this.userName = this.$route.query.name;
@@ -43,7 +49,12 @@ export default {
         },
         message: function (data) {
             console.log(data)
-            this.msgList.push(`${data.name}说:${data.msg}`)
+            // this.msgList.push(`${data.name}说:${data.msg}`)
+            this.msgList.push({
+                name: data.name === this.userName ? '我' : data.name,
+                msg: data.msg,
+                isSelf: data.name === this.userName
+            })
         }
     },
     methods: {
@@ -83,6 +94,8 @@ export default {
         border-top: 1px #ebebeb solid;
         border-bottom: 1px #ebebeb solid;
         overflow: scroll;
+        overflow-x: hidden;
+        padding: 10px;
 
     }
     .input-area {

@@ -5,7 +5,7 @@
       <div class="box">
         <h3>输入昵称以开始</h3>
         <div class="input-wrapper">
-          <el-input v-model="userName" placeholder="请输入昵称" style="width: 255px"></el-input>
+          <el-input v-model="userName" placeholder="请输入昵称" style="width: 255px" @keyup.enter="login"></el-input>
           <el-button type="primary" @click="login()" class="login-btn">开始聊天</el-button>
         </div>
       </div>
