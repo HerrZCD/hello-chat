@@ -11,7 +11,7 @@ Vue.use(ElementUI);
 
 Vue.use(new VueSocketio({
     debug: true,
-    connection: 'http://localhost:4000', //options object is Optional
+    connection: 'http://192.168.199.239:4000', //options object is Optional
   })
 );
 new Vue({

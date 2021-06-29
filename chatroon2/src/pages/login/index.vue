@@ -36,7 +36,7 @@ export default {
       const params = {
         name: this.userName
       }
-      fetch( "http://localhost:3000/api/data", 
+      fetch( "http://192.168.199.239:3000/api/data", 
         {
               method: 'POST', // or 'PUT'
               body: `name=${this.userName}`, //'{"name":"hehe","age":10}'
