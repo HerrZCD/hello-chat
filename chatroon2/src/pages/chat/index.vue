@@ -1,5 +1,6 @@
 <template>
-
+  <div class="outer-wrapper">
+    <head-menu class='fix-top' :uname="userName"></head-menu>
     <div class="wrapper">
         <h3>群聊</h3>
     
@@ -14,12 +15,12 @@
 
       </div>
     </div>
- 
+  </div>
 </template>
 
 <script>
 import msgBox from './msgBox.vue';
-
+import headMenu from '../../components/head-menu.vue';
 export default {
   name: 'chat',
 //   props: {
@@ -42,6 +43,9 @@ export default {
           userid: 1,
           username: this.userName
       })
+  },
+  components: {
+    headMenu,
   },
   sockets: {
         connect: function () {
@@ -74,6 +78,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .outer-wrapper {
+
+      width :100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+     }
     .wrapper {
         position: relative;
         width: 650px;
@@ -83,6 +94,7 @@ export default {
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         margin: 0 auto;
         display: flex;
+        top: 80px; 
         flex-direction: column;
         align-items: center;
         padding-top: 10px;
@@ -118,6 +130,12 @@ export default {
         border-radius: 4px;
         outline: none;
         padding: 5px;
+    }
+    .fix-top {
+      position: fixed;
+      width: 100%;
+      height: 50px;
+      top: 0;
     }
 
   
