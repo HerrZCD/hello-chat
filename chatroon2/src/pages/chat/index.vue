@@ -36,6 +36,7 @@ export default {
   },
   components: {
       msgBox,
+      headMenu,    
   },
   mounted() {
       this.userName = this.$route.query.name;
@@ -43,9 +44,6 @@ export default {
           userid: 1,
           username: this.userName
       })
-  },
-  components: {
-    headMenu,
   },
   sockets: {
         connect: function () {
@@ -88,6 +86,8 @@ export default {
     .wrapper {
         position: relative;
         width: 650px;
+        background-color: #fff;
+        opacity: 0.85;
         height: 610px;
         border-radius: 4px;
         border: 1px #ebebeb solid;
