@@ -31,6 +31,7 @@ export default {
 body {
   /*  background-image: url("./assets/bg.jpeg"); */
   background-position: center center;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -75,6 +75,9 @@ export default {
                   message: '注册成功',
                   type: 'success'
                 });
+                setTimeout(() => {
+                  this.$router.push('/login');
+                },1000);
               } else if (res.errno) {
 
                 if (res.errno === 1062) {
