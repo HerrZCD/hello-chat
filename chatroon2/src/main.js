@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from './store'//引入store
 import App from './App.vue'
 import router from './router/index.js'
 import VueSocketio from 'vue-socket.io'; 
@@ -17,4 +18,5 @@ Vue.use(new VueSocketio({
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')

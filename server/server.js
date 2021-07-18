@@ -9,6 +9,16 @@ var allowCrossDomain = function(req, res, next) {//设置response头部的中间
   next();
 };
 
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123456',
+  database : 'chat'
+});
+
+connection.connect();
+
 const userNames = new Set();
 app.use(allowCrossDomain);
 
@@ -28,6 +38,40 @@ app.post("/api/data",function (request,response) {
     }
   response.send(data);
 })
+
+
+app.post("/api/register",function (request,response) {
+  console.log(request.body);
+  const { name='匿名用户'+Math.random(), tel='', sex=0 } = request.body;
+
+  const data = {
+    name,
+    tel,
+    sex
+  }
+  
+  // 向数据库中插入数据
+  connection.query(`INSERT INTO user (name, sex, tel) VALUES ('${name}', '${sex}', '${tel}')`, (err, data) => {
+    if (err) {
+      console.error(err)
+      response.send(err);
+    } else {
+      console.log(data)
+      response.send(data);
+    }
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
 app.listen('3000',function () {
   console.log('>listening on 3000')
 });

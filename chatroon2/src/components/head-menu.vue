@@ -1,6 +1,6 @@
 <template>
 
-  <div class="wrapper">
+  <div class="head-wrapper flex-start">
     <div class="user-name">{{uname}}</div>
   </div>
 
@@ -25,20 +25,23 @@ export default {
 <style scoped>
 
 .user-name {
-  fontsize: 30px;
+  font-size: 20px;
   color: #fff;
   width: 100px;
-  line-heigt: 50px;
+  line-height: 50px;
   text-align: center;
 
 }
-.wrapper {
+.head-wrapper {
   width: 100%;
   height: 50px;
   background-color: #666;
   display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-end;
 }
+
+.flex-start {
+
+  align-items: flex-start;
+ }
 
 </style>

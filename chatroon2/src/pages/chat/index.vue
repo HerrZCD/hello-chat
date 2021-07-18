@@ -1,6 +1,18 @@
 <template>
   <div class="outer-wrapper">
-    <head-menu class='fix-top' :uname="userName"></head-menu>
+  <el-menu
+      class="el-menu-demo"
+      mode="horizontal"
+    @select="handleSelect"
+    background-color="#545c64"
+    text-color="#fff"
+  active-text-color="#ffd04b">
+    <el-submenu index="2">
+    <template slot="title">{{userName}}</template>
+      <el-menu-item index="2-1">设置</el-menu-item>
+      <el-menu-item index="2-2">退出登陆</el-menu-item>
+    </el-submenu>
+    </el-menu>
     <div class="wrapper">
         <h3>群聊</h3>
     
@@ -60,6 +72,8 @@ export default {
         }
     },
     methods: {
+      
+        handleSelect(key, keyPath) {},
         sendMsg: function () {
             // $socket is socket.io-client instance
             const data = {
@@ -69,7 +83,7 @@ export default {
             this.$socket.emit('message', data)
             this.msg = '';
         }
-    }
+    },
 
 }
 </script>

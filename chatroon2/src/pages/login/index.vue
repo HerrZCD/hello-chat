@@ -9,6 +9,7 @@
           <el-button type="primary" @click="login()" class="login-btn">开始聊天</el-button>
         </div>
       </div>
+      <a class="register" @click="register()">没有账号？立即注册</a>
     </div>
  
 </template>
@@ -26,6 +27,9 @@ export default {
   },
 
   methods: {
+    register() {
+      this.$router.push('/register');
+    },
     login() {
       // debugger
       this.userName.trim();
@@ -79,6 +83,12 @@ export default {
     margin-top: 50px;
   }
 
+  .register{
+    margin-top: 10px;
+    display: block;
+    margin-left: 300px;
+    cursor: pointer;
+  }
   .input-wrapper {
     display: flex;
     width: 100%;

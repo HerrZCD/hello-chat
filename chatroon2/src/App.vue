@@ -28,8 +28,15 @@ export default {
   padding: 0;
 
 }
+body {
+  /*  background-image: url("./assets/bg.jpeg"); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 html,body,#app{
 width:100%;
+height: 100%;
 margin:0;
 padding:0;
 }
